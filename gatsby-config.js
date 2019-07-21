@@ -152,6 +152,14 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: {
+        google: {
+          families: ['Vollkorn', 'Merriweather'],
+        },
+      },
+    },
+    {
       resolve: 'gatsby-plugin-i18n',
       options: {
         langKeyDefault: 'en',
