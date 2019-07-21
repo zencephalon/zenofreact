@@ -76,7 +76,12 @@ class BlogPostTemplate extends React.Component {
         <main>
           <article>
             <header>
-              <h1 style={{ color: 'var(--textTitle)' }}>
+              <h1
+                style={{
+                  color: 'var(--textTitle)',
+                  fontFamily: 'Vollkorn, sans-serif',
+                }}
+              >
                 {post.frontmatter.title}
               </h1>
               <p

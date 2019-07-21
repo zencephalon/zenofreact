@@ -25,6 +25,7 @@ class Layout extends React.Component {
       return (
         <h1
           style={{
+            fontFamily: 'Vollkorn, sans-serif',
             ...scale(0.75),
             marginBottom: 0,
             marginTop: 0,

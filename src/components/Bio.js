@@ -19,7 +19,7 @@ class Bio extends React.Component {
             marginBottom: 0,
             width: rhythm(2),
             height: rhythm(2),
-            borderRadius: '50%',
+            borderRadius: '30%',
           }}
         />
         <p style={{ maxWidth: rhythm(24) }}>
