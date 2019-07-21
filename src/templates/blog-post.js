@@ -25,33 +25,11 @@ class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark;
     const siteTitle = get(this.props, 'data.site.siteMetadata.title');
-    let {
-      previous,
-      next,
-      slug,
-      translations,
-      translatedLinks,
-    } = this.props.pageContext;
+    let { previous, next, slug } = this.props.pageContext;
     const lang = post.fields.langKey;
 
     // Replace original links with translated when available.
     let html = post.html;
-    translatedLinks.forEach(link => {
-      // jeez
-      function escapeRegExp(str) {
-        return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-      }
-      let translatedLink = '/' + lang + link;
-      html = html.replace(
-        new RegExp('"' + escapeRegExp(link) + '"', 'g'),
-        '"' + translatedLink + '"'
-      );
-    });
-
-    translations = translations.slice();
-    translations.sort((a, b) => {
-      return codeToLanguage(a) < codeToLanguage(b) ? -1 : 1;
-    });
 
     loadFontsForCode(lang);
     // TODO: this curried function is annoying
