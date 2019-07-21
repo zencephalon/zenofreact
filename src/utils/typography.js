@@ -1,4 +1,3 @@
-import '../fonts/fonts-shared.css';
 import './global.css';
 
 import Typography from 'typography';
