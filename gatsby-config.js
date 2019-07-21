@@ -5,7 +5,7 @@ module.exports = {
     description: 'Matthew Bunday learns and teaches React and Gatsby.',
     siteUrl: 'https://zenofreact.com',
     social: {
-      twitter: '@zencephalo',
+      twitter: '@zencephalon',
     },
   },
   pathPrefix: '/',
