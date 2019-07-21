@@ -1,11 +1,11 @@
 {
-  "name": "overreacted",
+  "name": "zenofreact",
   "private": true,
-  "description": "Overreacted",
+  "description": "ZenOfReact",
   "version": "1.0.0",
-  "author": "Dan Abramov <dan.abramov@me.com>",
+  "author": "Matthew Bunday <mkbunday@gmail.com>",
   "bugs": {
-    "url": "https://github.com/gaearon/overreacted.io/issues"
+    "url": "https://github.com/zencephalon/zenofreact/issues"
   },
   "dependencies": {
     "gatsby": "^2.0.76",
@@ -45,7 +45,7 @@
     "gh-pages": "^1.2.0",
     "prettier": "^1.14.2"
   },
-  "homepage": "https://overreacted.io",
+  "homepage": "https://zenofreact.com",
   "license": "MIT",
   "scripts": {
     "dev": "gatsby develop",
