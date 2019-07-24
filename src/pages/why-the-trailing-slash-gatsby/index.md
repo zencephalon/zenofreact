@@ -64,4 +64,8 @@ I personally don't plan to try removing the slash on Netlify, because their rewr
 
 ## Summary
 
-Gatsby's default behavior gives us decent looking URLs with the advantage that it works out of the box with most web servers' default rules on searching for an `index` file when loading directories. It seems like a sensible default to me, although I acknowledge that overriding it can cause pain and confusion. That pain and confusion comes more from the differing configurations of each web server, and if Gatsby removed the slash by default it would force more people to deal with the web server configurations directly. As it stands, a large percentage of people can simply use Gatsby without worrying about setting up rewrite rules on their web server.
+Gatsby's default behavior gives us decent looking URLs with the advantage that it works out of the box with most web servers' default rules on searching for an `index` file when loading directories.
+
+It seems like a sensible default to me, although I acknowledge that overriding it can cause pain and confusion. That pain and confusion comes more from the differing configurations of each web server, and if Gatsby removed the slash by default it would force more people to deal with the web server configurations directly.
+
+As it stands, a large percentage of people can simply use Gatsby without worrying about setting up rewrite rules on their web server.
