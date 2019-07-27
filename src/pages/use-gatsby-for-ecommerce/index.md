@@ -1,5 +1,5 @@
 ---
-title: Should I use Gatsby for my E-Commerce Business?
+title: Should I Use Gatsby for my E-Commerce Business?
 date: '2019-07-26'
 spoiler: A rundown of the disadvantages of Gatsby for E-Commerce
 ---
