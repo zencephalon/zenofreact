@@ -17,13 +17,12 @@ const systemFont = `system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
 
 class BlogPostTemplate extends React.Component {
   render() {
-    const post = this.props.data.markdownRemark;
+    const post = this.props.data.sitePage;
     const siteTitle = get(this.props, 'data.site.siteMetadata.title');
     let { previous, next, slug } = this.props.pageContext;
-    const lang = post.fields.langKey;
 
     // Replace original links with translated when available.
-    let html = post.html;
+    let html = post.context.html;
 
     // TODO: this curried function is annoying
     const editUrl = `https://github.com/${GITHUB_USERNAME}/${GITHUB_REPO_NAME}/edit/master/src/pages/index.md`;
@@ -34,10 +33,10 @@ class BlogPostTemplate extends React.Component {
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO
-          lang={lang}
-          title={post.frontmatter.title}
-          description={post.frontmatter.spoiler}
-          slug={post.fields.slug}
+          lang="en"
+          title={post.context.frontmatter.title}
+          description={post.context.frontmatter.spoiler}
+          slug={post.context.slug}
         />
         <main>
           <article>
@@ -48,7 +47,7 @@ class BlogPostTemplate extends React.Component {
                   fontFamily: 'Vollkorn, sans-serif',
                 }}
               >
-                {post.frontmatter.title}
+                {post.context.frontmatter.title}
               </h1>
               <p
                 style={{
@@ -58,8 +57,8 @@ class BlogPostTemplate extends React.Component {
                   marginTop: rhythm(-4 / 5),
                 }}
               >
-                {formatPostDate(post.frontmatter.date, lang)}
-                {` • ${formatReadingTime(post.timeToRead)}`}
+                {formatPostDate(post.context.frontmatter.date, 'en')}
+                {` • ${formatReadingTime(post.context.timeToRead)}`}
               </p>
             </header>
             <div dangerouslySetInnerHTML={{ __html: html }} />
@@ -147,6 +146,18 @@ export const pageQuery = graphql`
       siteMetadata {
         title
         author
+      }
+    }
+    sitePage(context: { slug: { eq: $slug } }) {
+      context {
+        html
+        slug
+        frontmatter {
+          date
+          title
+          spoiler
+        }
+        timeToRead
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {

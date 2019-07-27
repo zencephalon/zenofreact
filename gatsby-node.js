@@ -3,6 +3,7 @@ const Promise = require('bluebird');
 const path = require('path');
 const { createFilePath } = require('gatsby-source-filesystem');
 const { supportedLanguages } = require('./i18n');
+const { toLaxTitleCase } = require('titlecase');
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage, createRedirect } = actions;
@@ -36,6 +37,7 @@ exports.createPages = ({ graphql, actions }) => {
                     langKey
                     directoryName
                   }
+                  html
                   timeToRead
                   frontmatter {
                     title
@@ -68,11 +70,12 @@ exports.createPages = ({ graphql, actions }) => {
             path: post.node.fields.slug,
             component: blogPost,
             context: {
+              html: post.node.html,
               isPost: true,
               slug: post.node.fields.slug,
               previous,
               next,
-              frontmatter: { title, date, spoiler },
+              frontmatter: { title: toLaxTitleCase(title), date, spoiler },
               timeToRead: post.node.timeToRead,
             },
           });
