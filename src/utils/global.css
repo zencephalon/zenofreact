@@ -149,6 +149,19 @@ pre[class*='language-'] ::selection {
   color: rgb(128, 203, 196);
 }
 
+.token.inserted {
+  color: rgb(32, 225, 54);
+}
+.token.deleted {
+  color: rgb(255, 88, 116);
+}
+.token.coord {
+  color: #999;
+}
+.token.unchanged {
+  color: #fff;
+}
+
 .token.namespace {
   color: rgb(178, 204, 214);
 }
