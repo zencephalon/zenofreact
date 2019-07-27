@@ -15,7 +15,7 @@ class BlogIndexTemplate extends React.Component {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title');
     const langKey = this.props.pageContext.langKey;
 
-    const posts = get(this, 'props.data.allMarkdownRemark.edges');
+    const posts = get(this, 'props.data.allSitePage.edges');
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
@@ -25,9 +25,10 @@ class BlogIndexTemplate extends React.Component {
         </aside>
         <main>
           {posts.map(({ node }) => {
-            const title = get(node, 'frontmatter.title') || node.fields.slug;
+            const title =
+              get(node, 'context.frontmatter.title') || node.context.slug;
             return (
-              <article key={node.fields.slug}>
+              <article key={node.context.slug}>
                 <header>
                   <h3
                     style={{
@@ -38,19 +39,21 @@ class BlogIndexTemplate extends React.Component {
                   >
                     <Link
                       style={{ boxShadow: 'none' }}
-                      to={node.fields.slug}
+                      to={node.context.slug}
                       rel="bookmark"
                     >
                       {title}
                     </Link>
                   </h3>
                   <small>
-                    {formatPostDate(node.frontmatter.date, langKey)}
-                    {` • ${formatReadingTime(node.timeToRead)}`}
+                    {formatPostDate(node.context.frontmatter.date, langKey)}
+                    {` • ${formatReadingTime(node.context.timeToRead)}`}
                   </small>
                 </header>
                 <p
-                  dangerouslySetInnerHTML={{ __html: node.frontmatter.spoiler }}
+                  dangerouslySetInnerHTML={{
+                    __html: node.context.frontmatter.spoiler,
+                  }}
                 />
               </article>
             );
@@ -65,28 +68,27 @@ class BlogIndexTemplate extends React.Component {
 export default BlogIndexTemplate;
 
 export const pageQuery = graphql`
-  query($langKey: String!) {
+  query {
     site {
       siteMetadata {
         title
         description
       }
     }
-    allMarkdownRemark(
-      filter: { fields: { langKey: { eq: $langKey } } }
-      sort: { fields: [frontmatter___date], order: DESC }
+    allSitePage(
+      sort: { fields: [context___frontmatter___date], order: DESC }
+      filter: { context: { isPost: { eq: true } } }
     ) {
       edges {
         node {
-          fields {
+          context {
             slug
-            langKey
-          }
-          timeToRead
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
-            spoiler
+            frontmatter {
+              date
+              title
+              spoiler
+            }
+            timeToRead
           }
         }
       }

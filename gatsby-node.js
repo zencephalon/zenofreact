@@ -36,8 +36,11 @@ exports.createPages = ({ graphql, actions }) => {
                     langKey
                     directoryName
                   }
+                  timeToRead
                   frontmatter {
                     title
+                    date(formatString: "MMMM DD, YYYY")
+                    spoiler
                   }
                 }
               }
@@ -59,13 +62,18 @@ exports.createPages = ({ graphql, actions }) => {
             index === posts.length - 1 ? null : posts[index + 1].node;
           const next = index === 0 ? null : posts[index - 1].node;
 
+          const { title, date, spoiler } = post.node.frontmatter;
+
           createPage({
             path: post.node.fields.slug,
             component: blogPost,
             context: {
+              isPost: true,
               slug: post.node.fields.slug,
               previous,
               next,
+              frontmatter: { title, date, spoiler },
+              timeToRead: post.node.timeToRead,
             },
           });
         });

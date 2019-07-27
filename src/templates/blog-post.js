@@ -99,7 +99,7 @@ class BlogPostTemplate extends React.Component {
               }}
               to={'/'}
             >
-              Zen of React
+              {siteTitle}
             </Link>
           </h3>
           <Bio />
