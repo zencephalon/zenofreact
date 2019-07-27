@@ -54,15 +54,10 @@ exports.createPages = ({ graphql, actions }) => {
         // Create blog posts pages.
         const posts = result.data.allMarkdownRemark.edges;
 
-        const defaultLangPosts = posts.filter(
-          ({ node }) => node.fields.langKey === 'en'
-        );
-        _.each(defaultLangPosts, (post, index) => {
+        _.each(posts, (post, index) => {
           const previous =
-            index === defaultLangPosts.length - 1
-              ? null
-              : defaultLangPosts[index + 1].node;
-          const next = index === 0 ? null : defaultLangPosts[index - 1].node;
+            index === posts.length - 1 ? null : posts[index + 1].node;
+          const next = index === 0 ? null : posts[index - 1].node;
 
           createPage({
             path: post.node.fields.slug,
