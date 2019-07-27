@@ -8,6 +8,8 @@ If you run an ecommerce business or want to start one, you've probably heard tha
 
 I advise that you skip using Gatsby when building an ecommerce site, despite my love for Gatsby. I speak from my experience working as a software engineer at [one of the first companies to use Gatsby in production](https://meetfabric.com) and consulting for several online retailers including [Rumpl](https://rumpl.com), [Western Rise](https://westernrise.com), and [Oliver's Apparel](https://oliversapparel.com/).
 
+Sure, Gatsby has benefits. It builds blazing fast websites. It has a highly extensible base because its GraphQL data querying system lets it integrate a variety of data sources at build time. It brings the power of React to static website generators. But none of these benefits specifically suits Gatsby to ecommerce.
+
 A lot goes into building a successful ecommerce sales machine, and Gatsby simply doesn't have the support for many specialized tools that a mature platform like Shopify has. Choosing to use Gatsby for an ecommerce platform could lead to ballooning development costs as you realize that even basic functionality for a store front would require custom development in Gatsby. Let's use some examples.
 
 ## Color pickers and out of stock functionality
