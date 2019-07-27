@@ -6,14 +6,8 @@ import Bio from '../components/Bio';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import Signup from '../components/Signup';
-import Panel from '../components/Panel';
 import { formatPostDate, formatReadingTime } from '../utils/helpers';
 import { rhythm, scale } from '../utils/typography';
-import {
-  codeToLanguage,
-  createLanguageLink,
-  loadFontsForCode,
-} from '../utils/i18n';
 
 const GITHUB_USERNAME = 'zencephalon';
 const GITHUB_REPO_NAME = 'zenofreact';
@@ -31,16 +25,10 @@ class BlogPostTemplate extends React.Component {
     // Replace original links with translated when available.
     let html = post.html;
 
-    loadFontsForCode(lang);
     // TODO: this curried function is annoying
-    const languageLink = createLanguageLink(slug, lang);
-    const enSlug = languageLink('en');
-    const editUrl = `https://github.com/${GITHUB_USERNAME}/${GITHUB_REPO_NAME}/edit/master/src/pages/${enSlug.slice(
-      1,
-      enSlug.length - 1
-    )}/index${lang === 'en' ? '' : '.' + lang}.md`;
+    const editUrl = `https://github.com/${GITHUB_USERNAME}/${GITHUB_REPO_NAME}/edit/master/src/pages/index.md`;
     const discussUrl = `https://mobile.twitter.com/search?q=${encodeURIComponent(
-      `https://zenofreact.com${enSlug}`
+      `https://zenofreact.com${slug}`
     )}`;
 
     return (
